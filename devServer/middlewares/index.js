@@ -58,7 +58,7 @@ module.exports = (app, proxy) => {
 
 //   // TODO window.location.href to be used for target
 //   const options = {
-//     target: 'https://secure.hd-qa74.homedepotdev.com',
+//     target: 'url',
 //     secure: false,
 //     ws: true,
 //     changeOrigin: true,
@@ -74,5 +74,5 @@ module.exports = (app, proxy) => {
 //     },
 //   };
 
-//   app.use(proxy('/customer/account/v1/*', options));
+//   app.use(proxy('endpoint/*', options));
 };
