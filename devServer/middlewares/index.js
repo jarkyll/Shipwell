@@ -48,6 +48,8 @@ module.exports = (app, proxy) => {
   // ROUTING FOR TO FETCH APP
   app.get(`/*`, (req, res) => {
     const templateFile = path.join(__dirname, '../../build-dev/index.html');
+
+
     fs.readFile(templateFile, (err, data) => {
       const content = data.toString();
       const values = {};

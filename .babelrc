@@ -1,10 +1,13 @@
 {
-    "presets": ["env", "stage-2", "flow", "react"],
+    "presets": [
+        "@babel/preset-env",
+        "@babel/preset-react"
+    ],
     "retainLines": true,
-    "plugins": ["react-hot-loader/babel"],
-    "env": {
-        "test": {
-            "presets": ["env", "stage-2", "flow", "react"]
-        }
-    }
+    "plugins": [
+        "react-hot-loader/babel",
+        "@babel/plugin-syntax-dynamic-import",
+        "@babel/plugin-proposal-class-properties",
+        "react-loadable/babel"
+    ]
 }
