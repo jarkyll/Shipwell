@@ -33,16 +33,31 @@ app.use(logger.expressMiddleware);
 
 // Body Parser
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // Helmet Security
 app.use(helmet.xssFilter());
 app.use(helmet.hidePoweredBy());
-app.use(helmet.frameguard({ action: `sameorigin`}));
+app.use(helmet.frameguard({ action: `sameorigin` }));
 app.use(helmet.noCache());
 
 // Application Routes
 require('./middlewares')(app);
+
+// // Start the SSE
+
+// const server = http.createClient(function (req, res) {
+//     res.writeHead(200, { 'Content-Type': 'text/plain' });
+//     res.end('okay');
+// });
+
+
+// server.listen(9000, '127.0.0.1', function () {
+//     var sse = new SSE(server);
+//     sse.on('connection', function (client) {
+//         client.send('hi there!');
+//     });
+// });
 
 http.createServer(app).listen(process.env.HTTP_PORT, () => {
     logger.info(`Server is now running on port: ${process.env.HTTP_PORT}`);

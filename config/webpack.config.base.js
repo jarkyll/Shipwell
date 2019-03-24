@@ -8,7 +8,7 @@ module.exports = {
   entry: ['babel-polyfill', './src/index.js'],
   output: {
     publicPath: '/',
-    path: resolve(__dirname, '../../static/build'),
+    path: resolve(__dirname, '../build'),
     filename: '[name].js',
   },
   module: {

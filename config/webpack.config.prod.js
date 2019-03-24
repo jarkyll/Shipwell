@@ -8,8 +8,8 @@ const baseConfig = require('./webpack.config.base');
 module.exports = merge(baseConfig, {
   mode: 'production',
   output: {
-    publicPath: '/order/build/',
-    path: resolve(__dirname, '../../static/build'),
+    publicPath: '/',
+    path: resolve(__dirname, '../build'),
     filename: '[name].js',
   },
   optimization: {
@@ -55,8 +55,8 @@ module.exports = merge(baseConfig, {
       inject: true,
       template: resolve(__dirname, '../public/index.html'),
       minify: {
-        removeComments: true,
-        collapseWhitespace: true,
+        removeComments: false,
+        collapseWhitespace: false,
         removeRedundantAttributes: true,
         useShortDoctype: true,
         removeEmptyAttributes: true,

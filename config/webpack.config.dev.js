@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 const baseConfig = require('./webpack.config.base');
 
+console.log(resolve(__dirname, '../public/index.html'));
 module.exports = merge(baseConfig, {
   mode: 'development',
   entry: [
@@ -23,11 +24,8 @@ module.exports = merge(baseConfig, {
     new HtmlWebpackPlugin({
       inject: true,
       template: resolve(__dirname, '../public/index.html'),
+      filename: resolve(__dirname, '../build/index.html')
       // favicon: resolve(__dirname, '..', 'src', 'client', 'static', 'favicon.png'),
-      alwaysWriteToDisk: true,
-    }),
-    new HtmlWebpackHarddiskPlugin({
-      outputPath: resolve(__dirname, '../build-dev'),
-    }),
+    })
   ],
 });

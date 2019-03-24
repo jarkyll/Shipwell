@@ -2,6 +2,8 @@ const fs = require('fs-extra');
 const mustache = require('mustache');
 const config = require('config');
 const path = require('path');
+const http = require('http');
+const sse = require('sse');
 
 // // webpack configs
 const webpack = require('webpack');
@@ -47,7 +49,7 @@ module.exports = (app, proxy) => {
 
   // ROUTING FOR TO FETCH APP
   app.get(`/*`, (req, res) => {
-    const templateFile = path.join(__dirname, '../../build-dev/index.html');
+    const templateFile = path.join(__dirname, '../../build/index.html');
 
 
     fs.readFile(templateFile, (err, data) => {

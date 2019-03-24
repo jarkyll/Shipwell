@@ -5,6 +5,7 @@ import Home from '../components/Home/Home';
 const SiteSwitch = () => {
   return (
     <Switch>
+      <Route path="/view/home"  component={Home}/>
       <Route path="/home"  component={Home}/>
     </Switch>
   )
