@@ -89,11 +89,11 @@ const Home = () => {
                 <div className="uk-card-body uk-flex uk-flex-center uk-flex-middle">
                   <div className="uk-text-large">{value.symbol}</div>
                   <div
-                    class="uk-inline-clip uk-light uk-position-absolute"
+                    className="uk-inline-clip uk-light uk-position-absolute"
                     tabindex="0"
                   >
                     <span
-                      class="uk-transition-fade"
+                      className="uk-transition-fade"
                       uk-icon="icon: more; ratio: 2"
                     />
                   </div>
@@ -121,7 +121,7 @@ const Home = () => {
           <div className="uk-card uk-card-default uk-card-body">Item</div>
         </div>
 
-        <div class="uk-width-1-1 uk-position-bottom">
+        <div className="uk-width-1-1 uk-position-bottom">
           <button className="bx--btn bx--btn--primary" type="button">
             Footer
           </button>

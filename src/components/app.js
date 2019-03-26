@@ -1,23 +1,41 @@
 import { hot } from "react-hot-loader";
 import { BrowserRouter } from "react-router-dom";
 import { SiteSwitch } from "../routes";
+import { connect } from "react-redux";
 import React from "react";
 import initSocket from "../utils/socket";
 import Axios from "axios";
 import "public/scss/main.scss";
 import Nav from "src/components/Nav/Nav";
 import SideNav from "./SideNav/SideNav";
+import SearchModal from "./SearchModal/SearchModal";
 
-const Root = () => {
+let Root = props => {
+  const { showSearchModal } = props;
+  console.log(props);
   return (
     <React.Fragment>
-      <Nav />
-      <div className="uk-padding">
-        <SiteSwitch />
-      </div>
+      {showSearchModal ? (
+        <SearchModal />
+      ) : (
+        <React.Fragment>
+          <Nav />
+          <div className="uk-padding">
+            <SiteSwitch />
+          </div>
+        </React.Fragment>
+      )}
     </React.Fragment>
   );
 };
+
+const mapStateToProps = (state, props) => {
+  return {
+    showSearchModal: state.global.showSearchModal
+  };
+};
+
+Root = connect(mapStateToProps)(Root);
 
 class App extends React.Component {
   componentDidMount() {
@@ -31,11 +49,9 @@ class App extends React.Component {
     return (
       <React.Fragment>
         <SideNav />
-        <div>
-          <BrowserRouter>
-            <Root />
-          </BrowserRouter>
-        </div>
+        <BrowserRouter>
+          <Root />
+        </BrowserRouter>
       </React.Fragment>
     );
   }

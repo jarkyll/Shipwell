@@ -34,6 +34,7 @@
   },
   "dependencies": {
     "carbon-components": "^9.89.0",
+    "chart.js": "^2.8.0",
     "classnames": "2.2.6",
     "imports-loader": "^0.8.0",
     "jquery": "^3.3.1",
@@ -41,6 +42,7 @@
     "moment": "2.22.2",
     "mustache": "2.3.2",
     "react": "16.5.2",
+    "react-chartjs-2": "^2.7.4",
     "react-device-detect": "1.5.9",
     "react-dom": "16.5.2",
     "react-loadable": "5.5.0",

@@ -1,25 +1,32 @@
 import React from "react";
 import { connect } from "react-redux";
-import { TOGGLE_SIDE_NAV } from "../../actions/actions";
+import { TOGGLE_SIDE_NAV, TOGGLE_SEARCH_MODAL } from "../../actions/actions";
 import banner from "public/imgs/banner.png";
+import SearchModal from "../SearchModal/SearchModal";
 
 const NavBar = props => {
-  const { toggleSideNav } = props;
+  const { toggleSideNav, toggleSearchModal } = props;
 
   return (
-    <nav className="uk-navbar-container uk-margin" uk-navbar="true">
+    <nav className="uk-navbar-container uk-margin uk-margin-remove-top" uk-navbar="true">
       <div className="uk-navbar-left">
-        <a className="uk-navbar-toggle" onClick={toggleSideNav}>
-          <span uk-icon="more" />
-        </a>
+        <button
+          className="uk-navbar-toggle uk-icon"
+          uk-icon="more"
+          onClick={toggleSideNav}
+        />
       </div>
-
 
       <div className="uk-navbar-right">
         <div className="uk-navbar-item">
-          <input class="uk-input" type="text" placeholder="Input" />
+          <button
+            className="uk-icon"
+            uk-icon="search"
+            onClick={toggleSearchModal}
+          />
         </div>
       </div>
+      {/* <SearchModal /> */}
     </nav>
   );
 };
@@ -27,10 +34,11 @@ const NavBar = props => {
 const mapStateToProps = (state, props) => {};
 
 const mapDispatchToProps = (dispatch, props) => ({
-  toggleSideNav: () => dispatch(TOGGLE_SIDE_NAV())
+  toggleSideNav: () => dispatch(TOGGLE_SIDE_NAV()),
+  toggleSearchModal: () => dispatch(TOGGLE_SEARCH_MODAL())
 });
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(NavBar);

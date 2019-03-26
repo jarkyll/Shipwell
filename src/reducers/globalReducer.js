@@ -1,5 +1,6 @@
 const initialState = {
-  showSideNav: false
+  showSideNav: false,
+  showSearchModal: false
 };
 
 export const globalReducer = (state = initialState, action) => {
@@ -11,8 +12,15 @@ export const globalReducer = (state = initialState, action) => {
       } else {
         newState.showSideNav = !newState.showSideNav;
       }
-      return newState
-     default:
+      return newState;
+    case "TOGGLE_SEARCH_MODAL":
+      if (action.payload.toggle) {
+        newState.showSearchModal = action.payload.toggle;
+      } else {
+        newState.showSearchModal = !newState.showSearchModal;
+      }
+      return newState;
+    default:
       return newState;
   }
-}
+};

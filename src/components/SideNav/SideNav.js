@@ -32,8 +32,8 @@ const SideNav = props => {
 
           <img src={logo} alt="logo" />
 
-          <ul class="uk-nav uk-nav-default uk-nav-center uk-nav-primary">
-            <li class="uk-slidenav-container uk-flex-middle uk-flex-around"> 
+          <ul className="uk-nav uk-nav-default uk-nav-center uk-nav-primary">
+            <li className="uk-slidenav-container uk-flex-middle uk-flex-around"> 
               <a
                 className="uk-icon "
                 uk-icon="chevron-left"
@@ -47,15 +47,15 @@ const SideNav = props => {
               />
             </li>
 
-            <li class="uk-nav-divider" />
-            <li class="uk-parent">
+            <li className="uk-nav-divider" />
+            <li className="uk-parent">
               <a href="#">Parent</a>
             </li>
-            <li class="uk-nav-header">Header</li>
-            <li class="uk-nav-divider" />
+            <li className="uk-nav-header">Header</li>
+            <li className="uk-nav-divider" />
             <li>
               <a href="#">
-                <span class="uk-margin-small-right" uk-icon="icon: trash" />{" "}
+                <span className="uk-margin-small-right" uk-icon="icon: trash" />{" "}
                 Item
               </a>
             </li>
