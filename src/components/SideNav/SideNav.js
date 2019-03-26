@@ -33,7 +33,7 @@ const SideNav = props => {
           <img src={logo} alt="logo" />
 
           <ul class="uk-nav uk-nav-default uk-nav-center uk-nav-primary">
-            <li class="uk-slidenav-container" style={{justifyContent: "space-evenly"}}> 
+            <li class="uk-slidenav-container uk-flex-middle uk-flex-around"> 
               <a
                 className="uk-icon "
                 uk-icon="chevron-left"
