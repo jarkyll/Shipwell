@@ -1,7 +1,57 @@
-@import 'node_modules/carbon-components/scss/globals/scss/styles.scss';
 
-@import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
+@import url('https://fonts.googleapis.com/css?family=Germania+One');
+
+// 1. Your custom variables and variable overwrites.
+@import "./theme.scss";
+
+// 2. Import default variables and available mixins.
+@import "uikit/src/scss/variables-theme.scss";
+@import "uikit/src/scss/mixins-theme.scss";
+
+// // 3. Your custom mixin overwrites.
+@mixin hook-card() { color: #000; }
+
+// 4. Import UIkit.
+@import "uikit/src/scss/uikit-theme.scss";
 
 html {
-  font-family: 'Permanent Marker', cursive;
+  font-family: "Germania One", cursive;
 }
+
+
+.uk-offcanvas {
+  display: block;
+}
+
+#stock-choice {
+  color: white;
+
+  &:hover {
+    color: white;
+  }
+}
+
+
+
+
+// body {
+//   font-family: "Permanent Marker", cursive;
+//   margin: $spacing-xs;
+//   margin: $layout-sm $layout-2xs;
+//   margin: $spacing-xl 0 $spacing-sm 0;
+//   margin-right: $layout-lg;
+//   padding: $spacing-sm;
+//   padding: $layout-lg $layout-sm;
+//   padding: $spacing-xl $spacing-sm 0 $spacing-sm;
+//   padding-left: $spacing-auto;
+// }
+// html {
+//   margin: $spacing-xs;
+//   margin: $layout-sm $layout-2xs;
+//   margin: $spacing-xl 0 $spacing-sm 0;
+//   margin-right: $layout-lg;
+//   padding: $spacing-sm;
+//   padding: $layout-lg $layout-sm;
+//   padding: $spacing-xl $spacing-sm 0 $spacing-sm;
+//   padding-left: $spacing-auto;
+// }

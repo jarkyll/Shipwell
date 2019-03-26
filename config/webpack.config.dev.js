@@ -5,7 +5,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 const baseConfig = require('./webpack.config.base');
 
-console.log(resolve(__dirname, '../public/index.html'));
 module.exports = merge(baseConfig, {
   mode: 'development',
   entry: [
