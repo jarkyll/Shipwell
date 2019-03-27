@@ -33,25 +33,13 @@ const SideNav = props => {
           <img src={logo} alt="logo" />
 
           <ul className="uk-nav uk-nav-default uk-nav-center uk-nav-primary">
-            <li className="uk-slidenav-container uk-flex-middle uk-flex-around"> 
-              <a
-                className="uk-icon "
-                uk-icon="chevron-left"
-                type="button"
-              />
+            <li className="uk-slidenav-container uk-flex-middle uk-flex-around">
+              <a className="uk-icon " uk-icon="chevron-left" type="button" />
               <span className="uk-active ">Active</span>
-              <a
-                className="uk-icon "
-                uk-icon="chevron-right"
-                type="button"
-              />
+              <a className="uk-icon " uk-icon="chevron-right" type="button" />
             </li>
 
-            <li className="uk-nav-divider" />
-            <li className="uk-parent">
-              <a href="#">Parent</a>
-            </li>
-            <li className="uk-nav-header">Header</li>
+            <li className="uk-nav-header uk-text-large">History</li>
             <li className="uk-nav-divider" />
             <li>
               <a href="#">
