@@ -31,7 +31,30 @@ html {
   }
 }
 
-
+#search-bar-container {
+  padding-top: 35px;
+  padding-bottom: 35px;
+  padding-left: 20px;  
+  color: #cdd0d2;
+  background-color: #39424d;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  input {
+    background-color: rgba(0,0,0,0);
+    border: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    caret-color: #081421;
+    color: whitesmoke;
+    font-size: 48px;
+    font-weight: 600;
+    letter-spacing: -.005em;
+    &:focus {
+      outline: 0;    
+    }
+  }
+}
 
 
 // body {
