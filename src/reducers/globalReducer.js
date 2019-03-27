@@ -1,6 +1,7 @@
 const initialState = {
   showSideNav: false,
-  showSearchModal: false
+  showSearchModal: false,
+  searchInputValue: ""
 };
 
 export const globalReducer = (state = initialState, action) => {
@@ -19,6 +20,9 @@ export const globalReducer = (state = initialState, action) => {
       } else {
         newState.showSearchModal = !newState.showSearchModal;
       }
+      return newState;
+    case "ON_CHANGE_SEARCH_INPUT":
+      newState.searchInputValue = action.payload.value;
       return newState;
     default:
       return newState;

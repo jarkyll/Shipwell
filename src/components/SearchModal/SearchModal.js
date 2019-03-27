@@ -1,10 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
-import { TOGGLE_SEARCH_MODAL } from "../../actions/actions";
+import { TOGGLE_SEARCH_MODAL, ON_CHANGE_SEARCH_INPUT } from "../../actions/actions";
 import classNames from "classnames";
 
+
 const SearchModal = props => {
-  const { toggleSearchModal, showSearchModal } = props;
+  const { toggleSearchModal, showSearchModal, searchInputValue, onChangeSearchInput } = props;
   console.log(props);
   return (
     <div
@@ -19,16 +20,19 @@ const SearchModal = props => {
           class="uk-modal-close-full uk-close-large"
           type="button"
           uk-close="true"
+          tabIndex="0"
           onClick={toggleSearchModal}
         />
         <div class="uk-flex-1">
           <div id="search-bar-container">
-            <h3>Search for shit</h3>
+            <h3>Search for stocks, crypto, etc</h3>
             <input
               spellcheck="false"
-              placeholder="Search to Listen"
+              placeholder="Search ..."
               tabindex="1"
-              autofocus
+              autoFocus
+              value={searchInputValue}
+              onChange={onChangeSearchInput}
             />
           </div>
         </div>
@@ -37,13 +41,21 @@ const SearchModal = props => {
   );
 };
 
+const mapStateToProps = (state, props) => {
+  const { global : { searchInputValue } } = state; 
+  return {
+    searchInputValue
+  };
+};
+
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    toggleSearchModal: () => dispatch(TOGGLE_SEARCH_MODAL())
+    toggleSearchModal: () => dispatch(TOGGLE_SEARCH_MODAL()),
+    onChangeSearchInput: (e) => dispatch(ON_CHANGE_SEARCH_INPUT(e.target.value)) 
   };
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(SearchModal);

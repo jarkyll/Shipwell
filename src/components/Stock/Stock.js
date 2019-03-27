@@ -122,7 +122,7 @@ const Stock = props => {
               {data.companyName}
             </h2>
             <div className="uk-flex-inline uk-flex-wrap uk-width-1-1 uk-flex-around">
-              <h1 className="uk-margin-remove">Closing</h1>
+              <h1 className="uk-margin-remove uk-text-truncate">Latest Source: {data.latestSource}</h1>
               <h1 className="uk-text-right uk-heading-primary uk-margin-remove">
                 <sup>$</sup>
                 {data.latestPrice}

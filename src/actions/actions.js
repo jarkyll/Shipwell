@@ -11,3 +11,10 @@ export const TOGGLE_SEARCH_MODAL = toggle => ({
     toggle
   }
 });
+
+export const ON_CHANGE_SEARCH_INPUT = value => ({
+  type: "ON_CHANGE_SEARCH_INPUT",
+  payload: {
+    value
+  }
+});
