@@ -20,7 +20,7 @@ const NavBar = props => {
       <div className="uk-navbar-right">
         <div className="uk-navbar-item">
           <button
-            className="uk-icon"
+            className="uk-icon uk-navbar-toggle"
             uk-icon="search"
             onClick={toggleSearchModal}
           />
