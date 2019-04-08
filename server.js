@@ -12,10 +12,10 @@ app.get(`/*`, (req, res) => {
 
   res.sendFile(templateFile);
   fs.readFile(templateFile, (err, data) => {
-    const content = data.toString();
-    const values = {};
-    const finalHTML = mustache.to_html(content, values);
-    res.send(finalHTML);
+    // const content = data.toString();
+    // const values = {};
+    // const finalHTML = mustache.to_html(content, values);
+    // res.send(finalHTML);
   });
 });
 
