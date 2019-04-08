@@ -1,33 +1,32 @@
 import React from "react";
 import { connect } from "react-redux";
 import { TOGGLE_SIDE_NAV, TOGGLE_SEARCH_MODAL } from "../../actions/actions";
-import banner from "public/imgs/banner.png";
-import SearchModal from "../SearchModal/SearchModal";
+import { withRouter } from "react-router";
+
 
 const NavBar = props => {
   const { toggleSideNav, toggleSearchModal } = props;
 
   return (
-    <nav className="uk-navbar-container uk-margin uk-margin-remove-top" uk-navbar="true">
-      <div className="uk-navbar-left">
-        <button
-          className="uk-navbar-toggle uk-icon"
-          uk-icon="more"
-          onClick={toggleSideNav}
-        />
-      </div>
+    <div id="test">
+      <nav
+        className="uk-navbar-container uk-margin uk-margin-remove-top test"
+        uk-navbar="true"
+      >
 
-      <div className="uk-navbar-right">
-        <div className="uk-navbar-item">
-          <button
-            className="uk-icon uk-navbar-toggle"
-            uk-icon="search"
-            onClick={toggleSearchModal}
-          />
+        <div className="uk-navbar-right test">
+          <div className="uk-navbar-item">
+            <button
+              disabled={window.location.pathname !== '/maps'}
+              className="uk-icon uk-navbar-toggle"
+              uk-icon="icon: reply; ratio: 1.25"
+              onClick={() => {props.history.goBack()}}
+            />
+          </div>
         </div>
-      </div>
-      {/* <SearchModal /> */}
-    </nav>
+        {/* <SearchModal /> */}
+      </nav>
+    </div>
   );
 };
 
@@ -38,7 +37,7 @@ const mapDispatchToProps = (dispatch, props) => ({
   toggleSearchModal: () => dispatch(TOGGLE_SEARCH_MODAL())
 });
 
-export default connect(
+export default withRouter(connect(
   null,
   mapDispatchToProps
-)(NavBar);
+)(NavBar));

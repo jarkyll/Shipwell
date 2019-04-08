@@ -1,16 +1,20 @@
-import React from 'react';
-import { Switch, Route } from 'react-router-dom';
-import Home from '../components/Home/Home';
-import Stock from '../components/Stock/Stock';
+import React from "react";
+import { Switch, Route, Redirect } from "react-router-dom";
+import Home from "../components/Home/Home";
+import Nav from "../components/Nav/Nav";
+import MapsContainer from "../components/Maps/MapsContainer";
 
 const SiteSwitch = () => {
   return (
-    <Switch>
-      <Route path="/view/home"  component={Home}/>
-      <Route path="/home"  component={Home}/>
-      <Route path="/stock" component={Stock}/>
-    </Switch>
-  )
+    <React.Fragment>
+      <Nav />
+      <Switch>
+        <Route path="/home" component={Home} />
+        <Route path="/maps" component={MapsContainer} />
+        <Redirect to="/home" />
+      </Switch>
+    </React.Fragment>
+  );
 };
 
 export default SiteSwitch;

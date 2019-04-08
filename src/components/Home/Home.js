@@ -1,134 +1,146 @@
 import React from "react";
-import Axios from "axios";
+import { connect } from "react-redux";
+import { GET_USER_INFO_API, VALIDATE_ADDRESS_API } from "src/actions/actions";
+import classNames from "classnames";
 
-const Home = () => {
-  // Axios.get('https://sandbox.iexapis.com/beta/ref-data/symbols?token=Tpk_f01a5b9dc7654140b8086f22193ed178').then((resp) => {
-  //   console.log(resp);
-  // }).catch((err) => {
-  //   console.log(err);
-  // })
-  const stuff = [
-    {
-      symbol: "A",
-      exchange: "NYS",
-      name: "Agilent Technologies Inc.",
-      date: "2019-03-24",
-      type: "cs",
-      iexId: "IEX_46574843354B2D52",
-      region: "US",
-      currency: "USD",
-      isEnabled: true
-    },
-    {
-      symbol: "AA",
-      exchange: "NYS",
-      name: "Alcoa Corp.",
-      date: "2019-03-24",
-      type: "cs",
-      iexId: "IEX_4238333734532D52",
-      region: "US",
-      currency: "USD",
-      isEnabled: true
-    },
-    {
-      symbol: "AAAU",
-      exchange: "PSE",
-      name: "Perth Mint Physical Gold ETF",
-      date: "2019-03-24",
-      type: "et",
-      iexId: "IEX_474B433136332D52",
-      region: "US",
-      currency: "USD",
-      isEnabled: true
-    },
-    {
-      symbol: "AABA",
-      exchange: "NAS",
-      name: "Altaba Inc.",
-      date: "2019-03-24",
-      type: "cef",
-      iexId: "IEX_4E5434354A302D52",
-      region: "US",
-      currency: "USD",
-      isEnabled: true
-    },
-    {
-      symbol: "AAC",
-      exchange: "NYS",
-      name: "AAC Holdings Inc.",
-      date: "2019-03-24",
-      type: "cs",
-      iexId: "IEX_4843364642592D52",
-      region: "US",
-      currency: "USD",
-      isEnabled: true
-    },
-    {
-      symbol: "AADR",
-      exchange: "PSE",
-      name: "AdvisorShares Dorsey Wright ADR ETF",
-      date: "2019-03-24",
-      type: "et",
-      iexId: "IEX_5253355435362D52",
-      region: "US",
-      currency: "USD",
-      isEnabled: true
+class Home extends React.Component {
+  constructor(props) {
+    super(props);
+    props.fetchUserInfo();
+    this.state = {
+      startingPoint: "",
+      endingPoint: "",
+      startingNeedsValidation: true,
+      endingNeedsValidation: true
+    };
+  }
+
+  areAddressesValid = () => {
+    const isValid =
+      this.isFromFieldValid() &&
+      this.isToFieldValid() &&
+      (!this.state.startingNeedsValidation &&
+        !this.state.endingNeedsValidation);
+    return isValid;
+  };
+
+  isFromFieldValid = () => {
+    return this.props.isStartValid && this.props.isStartValid !== {} && !this.state.startingNeedsValidation;
+  }
+
+  isToFieldValid = () => {
+    return this.props.isEndValid && this.props.isEndValid !== {} && !this.state.endingNeedsValidation
+  }
+
+  onChangeStartingInput = e => {
+    this.setState({
+      startingPoint: e.target.value,
+      startingNeedsValidation: true
+    });
+  };
+
+  onChangeEndingInput = e => {
+    this.setState({
+      endingPoint: e.target.value,
+      endingNeedsValidation: true
+    });
+  };
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.isStartValid !== this.props.isStartValid) {
+      this.setState({
+        startingNeedsValidation: false,
+        startingPoint: !nextProps.isStartValid ? this.state.startingPoint : nextProps.isStartValid.formatted_address
+      });
+    } else if (nextProps.isEndValid !== this.props.isEndValid) {
+      this.setState({
+        endingNeedsValidation: false,
+        endingPoint: !nextProps.isEndValid ? this.state.endingPoint : nextProps.isEndValid.formatted_address
+      });
     }
-  ];
+  }
 
-  return (
-    <React.Fragment>
-      <div
-        className="uk-child-width-expand@s uk-text-center uk-grid"
-        uk-grid="true"
-      >
-        {stuff.map((value, key) => {
-          return (
-            <div className="uk-width-1-1 uk-width-1-1@s uk-width-1-3@m uk-width-1-4@l uk-width-1-5@xl">
-              <div className="uk-card uk-card-default uk-card-hover uk-transition-toggle" style={{cursor: "pointer"}}>
-                <div className="uk-card-body uk-flex uk-flex-center uk-flex-middle">
-                  <div className="uk-text-large">{value.symbol}</div>
-                  <div
-                    className="uk-inline-clip uk-light uk-position-absolute"
-                    tabindex="0"
-                  >
-                    <span
-                      className="uk-transition-fade"
-                      uk-icon="icon: more; ratio: 2"
-                    />
-                  </div>
-                </div>
-              </div>
+  render() {
+    return (
+      <React.Fragment>
+        <div
+          className="uk-child-width-expand@s uk-text-center uk-grid"
+          uk-grid="true"
+        >
+          <div className="uk-width-1-1 uk-width-1-1@s uk-width-1-2@m uk-width-1-2@l uk-width-1-2@xl">
+            <div className="uk-margin">
+              <input
+                spellCheck="false"
+                placeholder="From ..."
+                tabIndex="1"
+                className={classNames("uk-input", {
+                  "uk-form-danger": !this.props.isStartValid,
+                  "uk-form-success":
+                    this.isFromFieldValid()
+                })}
+                type="text"
+                autoFocus
+                value={this.state.startingPoint}
+                onChange={this.onChangeStartingInput}
+                onBlur={() =>
+                  this.props.validateAddress(this.state.startingPoint, "start")
+                }
+              />
             </div>
-          );
-        })}
-        <div className="uk-width-1-1 uk-width-1-1@s uk-width-1-3@m uk-width-1-4@l uk-width-1-5@xl">
-          <div className="uk-card uk-card-default uk-card-body">Item</div>
+          </div>
+          <div className="uk-width-1-1 uk-width-1-1@s uk-width-1-2@m uk-width-1-2@l uk-width-1-2@xl">
+            <div className="uk-margin">
+              <input
+                spellCheck="false"
+                placeholder="To ..."
+                tabIndex="2"
+                className={classNames("uk-input", {
+                  "uk-form-danger": !this.props.isEndValid,
+                  "uk-form-success":
+                    this.isToFieldValid()
+                })}
+                type="text"
+                value={this.state.endingPoint}
+                placeholder="To ..."
+                onChange={this.onChangeEndingInput}
+                onBlur={() =>
+                  this.props.validateAddress(this.state.endingPoint, "end")
+                }
+              />
+            </div>
+          </div>
+          <div className="uk-width-1-1">
+            <div className="uk-margin">
+              <button
+                className="uk-button uk-button-default"
+                disabled={!this.areAddressesValid()}
+                onClick={() => this.props.history.push('/maps')}
+              >
+                Button
+              </button>
+            </div>
+          </div>
         </div>
-        <div className="uk-width-1-1 uk-width-1-1@s uk-width-1-3@m uk-width-1-4@l uk-width-1-5@xl">
-          <div className="uk-card uk-card-default uk-card-body">Item</div>
-        </div>
-        <div className="uk-width-1-1 uk-width-1-1@s uk-width-1-3@m uk-width-1-4@l uk-width-1-5@xl">
-          <div className="uk-card uk-card-default uk-card-body">Item</div>
-        </div>
-        <div className="uk-width-1-1 uk-width-1-1@s uk-width-1-3@m uk-width-1-4@l uk-width-1-5@xl">
-          <div className="uk-card uk-card-default uk-card-body">Item</div>
-        </div>
-        <div className="uk-width-1-1 uk-width-1-1@s uk-width-1-3@m uk-width-1-4@l uk-width-1-5@xl">
-          <div className="uk-card uk-card-default uk-card-body">Item</div>
-        </div>
-        <div className="uk-width-1-1 uk-width-1-1@s uk-width-1-3@m uk-width-1-4@l uk-width-1-5@xl">
-          <div className="uk-card uk-card-default uk-card-body">Item</div>
-        </div>
+      </React.Fragment>
+    );
+  }
+}
 
-        <div className="uk-width-1-1 uk-position-bottom">
-          <button className="bx--btn bx--btn--primary" type="button">
-            Footer
-          </button>
-        </div>
-      </div>
-    </React.Fragment>
-  );
+const mapStatetoProps = (state, props) => {
+  const global = state.global;
+  return {
+    isStartValid: global.geocodedStart,
+    isEndValid: global.geocodedEnd
+  };
 };
 
-export default Home;
+const mapDispatchtoProps = dispatch => ({
+  fetchUserInfo: () => dispatch(GET_USER_INFO_API()),
+  validateAddress: (address, position) =>
+    dispatch(VALIDATE_ADDRESS_API(address, position))
+});
+
+export default connect(
+  mapStatetoProps,
+  mapDispatchtoProps
+)(Home);

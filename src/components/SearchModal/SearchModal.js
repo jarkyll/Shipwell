@@ -6,7 +6,6 @@ import classNames from "classnames";
 
 const SearchModal = props => {
   const { toggleSearchModal, showSearchModal, searchInputValue, onChangeSearchInput } = props;
-  console.log(props);
   return (
     <div
       id="my-id"

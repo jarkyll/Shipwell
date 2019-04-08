@@ -1,5 +1,4 @@
-
-@import url('https://fonts.googleapis.com/css?family=Germania+One');
+@import url("https://fonts.googleapis.com/css?family=Germania+One");
 
 // 1. Your custom variables and variable overwrites.
 @import "./theme.scss";
@@ -9,7 +8,9 @@
 @import "uikit/src/scss/mixins-theme.scss";
 
 // // 3. Your custom mixin overwrites.
-@mixin hook-card() { color: #000; }
+@mixin hook-card() {
+  color: #000;
+}
 
 // 4. Import UIkit.
 @import "uikit/src/scss/uikit-theme.scss";
@@ -17,7 +18,6 @@
 html {
   font-family: "Germania One", cursive;
 }
-
 
 .uk-offcanvas {
   display: block;
@@ -34,14 +34,12 @@ html {
 #search-bar-container {
   padding-top: 35px;
   padding-bottom: 35px;
-  padding-left: 20px;  
+  padding-left: 20px;
   color: #cdd0d2;
   background-color: #39424d;
   text-align: left;
-  display: flex;
-  flex-direction: column;
   input {
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(0, 0, 0, 0);
     border: none;
     text-decoration: none;
     box-sizing: border-box;
@@ -49,14 +47,47 @@ html {
     color: whitesmoke;
     font-size: 48px;
     font-weight: 600;
-    letter-spacing: -.005em;
+    letter-spacing: -0.005em;
     &:focus {
-      outline: 0;    
+      outline: 0;
     }
   }
 }
 
+// .test {
+//   &:before {
+//     display: flex;
+//     position: relative;
+//     content: '';
+//     box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
+//     filter: blur(10px);
+//   }
+// }
 
+.uk-navbar-container,
+.uk-card {
+  &:before {
+    width: 100%;
+    content: "";
+    box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.5);
+    filter: blur(10px);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+button.uk-link-heading {
+  cursor: pointer;
+  border: 0;
+  background-color: transparent;
+
+  &:hover {
+    color: $global-link-hover-color;
+  }
+}
 // body {
 //   font-family: "Permanent Marker", cursive;
 //   margin: $spacing-xs;
