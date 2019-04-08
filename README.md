@@ -19,6 +19,6 @@ The user's company address will also be used to pinpoint a marker onto the map.
 * npm run server
 * visit `http://localhost:8080`
 
-#Routes
+# Routes
 * `/home` is the base url which contains the input fields to search the directions to
 * `/maps` is the url that will display the map if there is a starting and ending geolocation in redux.
