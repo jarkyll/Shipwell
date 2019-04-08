@@ -1,12 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import { TOGGLE_SIDE_NAV, TOGGLE_SEARCH_MODAL } from "../../actions/actions";
 import { withRouter } from "react-router";
 
 
 const NavBar = props => {
-  const { toggleSideNav, toggleSearchModal } = props;
-
   return (
     <div id="test">
       <nav
@@ -37,7 +34,4 @@ const mapDispatchToProps = (dispatch, props) => ({
   toggleSearchModal: () => dispatch(TOGGLE_SEARCH_MODAL())
 });
 
-export default withRouter(connect(
-  null,
-  mapDispatchToProps
-)(NavBar));
+export default withRouter(NavBar);
