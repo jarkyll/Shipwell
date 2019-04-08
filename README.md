@@ -1,1 +1,15 @@
-https://cloud.iexapis.com/beta/stock/aapl/intraday-prices?token=pk_c09c75f7d31249918f579c2fc16f49fc&symbols=aapl for intraday call
+# Shipwell Demo App
+
+## Installation and run Dev Server
+
+* `git clone this app`
+* cd src
+* npm install
+* npm start
+* visit `http://localhost:8080`
+
+## Build the App and Run built files
+
+* npm install
+* npm run build
+* npm run server
