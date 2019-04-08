@@ -16,7 +16,8 @@
     "build": "cross-env NODE_ENV=production webpack --config config/webpack.config.prod.js --progress",
     "prettier": "prettier --ignore-path .gitignore --write './**/*.js'",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "server": "node server"
   },
   "jest": {
     "collectCoverageFrom": [
