@@ -5,7 +5,7 @@ import { withRouter } from "react-router";
 
 const NavBar = props => {
   return (
-    <div id="test">
+    <div id="nav-bar">
       <nav
         className="uk-navbar-container uk-margin uk-margin-remove-top test"
         uk-navbar="true"
@@ -26,12 +26,5 @@ const NavBar = props => {
     </div>
   );
 };
-
-const mapStateToProps = (state, props) => {};
-
-const mapDispatchToProps = (dispatch, props) => ({
-  toggleSideNav: () => dispatch(TOGGLE_SIDE_NAV()),
-  toggleSearchModal: () => dispatch(TOGGLE_SEARCH_MODAL())
-});
 
 export default withRouter(NavBar);
