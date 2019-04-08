@@ -16,22 +16,41 @@
     "build": "cross-env NODE_ENV=production webpack --config config/webpack.config.prod.js --progress",
     "prettier": "prettier --ignore-path .gitignore --write './**/*.js'",
     "test": "jest",
+    "test:coverage": "jest --no-cache --coverage",
     "test:watch": "jest --watch",
     "server": "node server"
   },
   "jest": {
-    "collectCoverageFrom": [
-      "<rootDir>__tests__/**/*.{js,jsx,mjs}"
+    "coverageDirectory": "coverage",
+    "coverageReporters": [
+      "html"
     ],
-    "setupTestFrameworkScriptFile": "<rootDir>__tests__/setup/setupEnzyme.js",
+    "collectCoverageFrom": [
+      "**/src/**/*.js"
+    ],
+    "verbose": true,
+    "moduleDirectories": [
+      "node_modules",
+      "src"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>__tests__/setup/setupEnzyme.js"
+    ],
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
     ],
     "transform": {
-      "^.+\\.(js|jsx|mjs)$": "<rootDir>/node_modules/babel-jest"
+      "^.+\\.(js|jsx|mjs)$": "<rootDir>/node_modules/babel-jest",
+      "\\.(css|less|scss)$": "<rootDir>/__tests__/setup/assetsTransformer.js"
+    },
+    "moduleNameMapper": {
+      "^_$": "lodash",
+      "^src(.*)$": "<rootDir>/src$1",
+      "^public(.*)$": "<rootDir>/public$1"
     },
     "testPathIgnorePatterns": [
-      "<rootDir>/__tests__/setup/"
+      "<rootDir>/__tests__/setup/",
+      "/node_modules"
     ]
   },
   "dependencies": {
