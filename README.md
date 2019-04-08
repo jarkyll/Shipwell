@@ -5,7 +5,7 @@
 * `git clone this app`
 * cd src
 * npm install
-* npm start
+* npm run start
 * visit `http://localhost:8080`
 
 ## Build the App and Run built files
@@ -13,3 +13,4 @@
 * npm install
 * npm run build
 * npm run server
+* visit `http://localhost:8080`
