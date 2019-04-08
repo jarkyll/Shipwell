@@ -5,7 +5,7 @@ const path = require('path');
 const http = require('http');
 const sse = require('sse');
 
-// // webpack configs
+// webpack configs
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
@@ -13,15 +13,6 @@ const webpackConfig = require('../../config/webpack.config.dev');
 const logger = require('../logger');
 
 const compiler = webpack(webpackConfig);
-
-// // middleware configs
-// const contextPath = config.get('paths.context');
-// const profile = config.get('profile');
-// // const secureHostName = config.get(`hosts.${profile}.secure`);
-// const nonSecureHostName = config.get(`hosts.${profile}.non-secure`);
-// const customerApiContext = config.get('paths.customerApiContext');
-// const ordersApiContext = config.get('paths.ordersApiContext');
-// const ensighten = config.get('ensighten');
 
 module.exports = (app, proxy) => {
   // set up webpack middlewares
@@ -47,7 +38,7 @@ module.exports = (app, proxy) => {
   );
   app.use(webpackHotMiddleware(compiler));
 
-  // ROUTING FOR TO FETCH APP
+  // Routing to fetch app
   app.get(`/*`, (req, res) => {
     const templateFile = path.join(__dirname, '../../build/index.html');
 
@@ -59,24 +50,4 @@ module.exports = (app, proxy) => {
       res.send(finalHTML);
     });
   });
-
-//   // TODO window.location.href to be used for target
-//   const options = {
-//     target: 'url',
-//     secure: false,
-//     ws: true,
-//     changeOrigin: true,
-//     onProxyReq: (proxyReq, req, res, options) => {
-//       if (req.body) {
-//         let bodyData = JSON.stringify(req.body);
-//         // incase if content-type is application/x-www-form-urlencoded -> we need to change to application/json
-//         proxyReq.setHeader('Content-Type', 'application/json');
-//         proxyReq.setHeader('Content-Length', Buffer.byteLength(bodyData));
-//         // stream the content
-//         proxyReq.write(bodyData);
-//       }
-//     },
-//   };
-
-//   app.use(proxy('endpoint/*', options));
 };
