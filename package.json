@@ -1,11 +1,12 @@
 {
-  "name": "stacks",
+  "name": "Shipwell",
   "version": "1.0.0",
-  "description": "fantasy crypto stocks",
+  "description": "Shipwell demo APP",
   "main": "index.js",
   "author": "Nabeel Virani",
   "license": "ISC",
   "scripts": {
+    "app": "node devserver",
     "dev:clean": "rimraf .application.log",
     "dev:server": "node devserver",
     "dev:lint": "esw -w --quiet",
