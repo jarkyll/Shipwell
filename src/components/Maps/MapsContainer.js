@@ -25,6 +25,7 @@ class MapsContainer extends React.Component {
         <MapLoader
           start = {this.props.start}
           end = {this.props.end}
+          company = {this.props.company}
           googleMapURL = "https://maps.googleapis.com/maps/api/js?key=AIzaSyDurZQBXjtSzKeieXwtFeGe-jhZu-HEGQU"
           loadingElement = {<div style={{ height: `100%` }} />}
         />
@@ -36,7 +37,8 @@ class MapsContainer extends React.Component {
 const mapStatetoProps = state => {
   return {
     start: state.global.geocodedStart,
-    end: state.global.geocodedEnd
+    end: state.global.geocodedEnd,
+    company: state.global.geocodedCompany
   };
 };
 

@@ -47,7 +47,7 @@ class Map extends React.Component {
       <GoogleMap
         defaultZoom={13}
       >
-        <Marker key={0} position={ {lat: 30.266926, lng: -97.750519 }}></Marker>
+        <Marker key={0} position={ {lat: this.props.company.latitude, lng: this.props.company.longitude }}></Marker>
         <DirectionsRenderer directions={this.state.directions} />
       </GoogleMap>
     ));
