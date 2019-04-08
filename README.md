@@ -5,10 +5,12 @@ The user's company address will also be used to pinpoint a marker onto the map.
 
 
 ## Installation and run Dev Server
+* Note: You must run npm run build in order to build the initial index.html template
 
 * `git clone github.com/jarkyll/Shipwell.git`
 * cd src
 * npm install
+* npm run build
 * npm run start
 * visit `http://localhost:8080`
 

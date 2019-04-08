@@ -11,12 +11,12 @@ app.get(`/*`, (req, res) => {
   const templateFile = path.join(__dirname, './build/index.html');
 
   res.sendFile(templateFile);
-  // fs.readFile(templateFile, (err, data) => {
-  //   const content = data.toString();
-  //   const values = {};
-  //   const finalHTML = mustache.to_html(content, values);
-  //   res.send(finalHTML);
-  // });
+  fs.readFile(templateFile, (err, data) => {
+    const content = data.toString();
+    const values = {};
+    const finalHTML = mustache.to_html(content, values);
+    res.send(finalHTML);
+  });
 });
 
 http.createServer(app).listen(8080, () => {
